@@ -1,0 +1,13 @@
+name = "parse"
+license = "Apache-2.0"
+defaultTargets = ["Parse"]
+testDriver = "ParseTest"
+
+[[lean_lib]]
+name = "Parse"
+leanOptions = { autoImplicit = true, warningAsError = true }
+
+# The tests are checked when this library compiles: `lake test` (or `lake build ParseTest`).
+[[lean_lib]]
+name = "ParseTest"
+roots = ["Parse.Test"]
