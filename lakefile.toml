@@ -1,13 +1,13 @@
-name = "parse"
+name = "demur"
 license = "Apache-2.0"
-defaultTargets = ["Parse"]
-testDriver = "ParseTest"
+defaultTargets = ["Demur"]
+testDriver = "DemurTest"
 
 [[lean_lib]]
-name = "Parse"
+name = "Demur"
 leanOptions = { autoImplicit = true, warningAsError = true }
 
-# The tests are checked when this library compiles: `lake test` (or `lake build ParseTest`).
+# The tests are checked when this library compiles: `lake test` (or `lake build DemurTest`).
 [[lean_lib]]
-name = "ParseTest"
-roots = ["Parse.Test"]
+name = "DemurTest"
+roots = ["Demur.Test"]

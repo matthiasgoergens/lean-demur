@@ -1,10 +1,10 @@
 module
 
-public import Parse
+public import Demur
 -- the `#guard`s below run code from this import
-meta import Parse
+meta import Demur
 
-namespace Parse.Test
+namespace Demur.Test
 
 deriving instance BEq for Result
 

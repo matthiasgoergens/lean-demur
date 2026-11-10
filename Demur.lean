@@ -2,7 +2,7 @@ module
 
 public section
 
-namespace Parse
+namespace Demur
 
 /-! # Parser combinators over a text's characters
 

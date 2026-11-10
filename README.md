@@ -1,12 +1,12 @@
-# Parse
+# Demur
 
-Parser combinators for Lean 4, on the toolchain alone (no Mathlib, no Batteries), in which a rule ends in one of three ways: it reads something and says where it stopped; it does not apply (`miss`), so an alternative is tried from the same place; or it refuses the text with a reason of a type you choose (`refuse`), which is final: no alternative is tried.  A grammar that never refuses fixes the reason type to `Empty`.
+Parser combinators for Lean 4, on the toolchain alone (no Mathlib, no Batteries), in which a rule can demur.  A rule ends in one of three ways: it reads something and says where it stopped; it does not apply (`miss`), so an alternative is tried from the same place; or it refuses the text with a reason of a type you choose (`refuse`), which is final: no alternative is tried.  A grammar that never refuses fixes the reason type to `Empty`.
 
 The distinction between "this rule does not apply here" and "this text is wrong" is what Lean's own `Std.Internal.Parsec` lacks, and it is what a grammar needs to report a typed error rather than backtrack past it.
 
 ```lean
-import Parse
-open Parse
+import Demur
+open Demur
 
 def digits : P ε Nat := do
   let ds ← many1 (sat Char.isDigit)
@@ -25,19 +25,19 @@ Every function is total: the repeating combinators stop on a measure, without fu
 In `lakefile.lean`:
 
 ```lean
-require parse from git "https://github.com/matthiasgoergens/lean-parse" @ "<commit>"
+require demur from git "https://github.com/matthiasgoergens/lean-demur" @ "<commit>"
 ```
 
 or in `lakefile.toml`:
 
 ```toml
 [[require]]
-name = "parse"
-git = "https://github.com/matthiasgoergens/lean-parse"
+name = "demur"
+git = "https://github.com/matthiasgoergens/lean-demur"
 rev = "<commit>"
 ```
 
-The toolchain is in `lean-toolchain`.  `lake test` runs the examples in `Parse/Test.lean`.
+The toolchain is in `lean-toolchain`.  `lake test` runs the examples in `Demur/Test.lean`.
 
 ## Limits
 
